@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Call Example</h1>
+    <button id="fetch-button">Fetch Data</button>
+    <div id="response" class="response"></div>
+
+    <script>
+        document.getElementById('fetch-button').addEventListener('click', () => {
+            fetch('/api/hello')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('response').textContent = data.message;
+                })
+                .catch(error => {
+                    document.getElementById('response').textContent = 'Error fetching data: ' + error;
+                });
+        });
+    </script>
+</body>
+</html>
